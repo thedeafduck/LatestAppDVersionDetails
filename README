@@ -1,0 +1,7 @@
+# Latest AppD Version Details
+
+## TODO
+- Grab the OAuth Token
+- **DONE** - Download the JSON of latest versions
+- **DONE** - Create a list of Latest versions based on "approved" agents list
+- Download agents lists in "latest_versions.csv"

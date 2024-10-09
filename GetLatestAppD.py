@@ -29,39 +29,39 @@ AgentDataFile = currentPath+"\AppDLatestsVersions.json"
 ApprovedAgentFile = currentPath+'\ApprovedAgents.txt'
 outFileName = currentPath+'\latest_agents.csv'
 
-# # get user creds
-# userID = input('Enter your Cisco ID: ')
-# pWord = getpass.getpass(prompt='Password: ')
+# get user creds
+userID = input('Enter your Cisco ID: ')
+pWord = getpass.getpass(prompt='Password: ')
 
-# # get an OAUTH code
-# # Define the URL for the OAuth token endpoint url = "https://somelink.sanitizedbyJun"
-# oauthURL = "https://identity.msrv.saas.appdynamics.com/v2.0/oauth/token"
+# get an OAUTH code
+# Define the URL for the OAuth token endpoint url = "https://somelink.sanitizedbyJun"
+oauthURL = "https://identity.msrv.saas.appdynamics.com/v2.0/oauth/token"
  
-# # Define the payload (JSON data)
-# oauthPayload = {
-#   "username": userID,
-#   "password": pWord,
-#   "scopes": ["download"]
-# }
+# Define the payload (JSON data)
+oauthPayload = {
+  "username": userID,
+  "password": pWord,
+  "scopes": ["download"]
+}
  
-# # Define headers (for JSON content)
-# oauthHeaders = {
-#   "Content-Type": "application/json"
-# }
+# Define headers (for JSON content)
+oauthHeaders = {
+  "Content-Type": "application/json"
+}
  
-# # Send the POST request with JSON data
-# requestText = "response = requests.post("+oauthURL+", headers="+json.dumps(oauthHeaders)+", data=json.dumps("+json.dumps(oauthPayload)+"))"
-# print(requestText)
-# response = requests.post(oauthURL, headers=oauthHeaders, data=json.dumps(oauthPayload))
+# Send the POST request with JSON data
+requestText = "response = requests.post("+oauthURL+", headers="+json.dumps(oauthHeaders)+", data=json.dumps("+json.dumps(oauthPayload)+"))"
+print(requestText)
+response = requests.post(oauthURL, headers=oauthHeaders, data=json.dumps(oauthPayload))
  
-# # Check if the request was successful (status code 200)
-# if response.status_code == 200:
-#     # Parse the JSON response and extract the token
-#     token_data = response.json()
-#     print("Response:", token_data)
-# else:
-#     print(f"Failed to retrieve token. Status code: {response.status_code}")
-#     print(response.text)
+# Check if the request was successful (status code 200)
+if response.status_code == 200:
+    # Parse the JSON response and extract the token
+    token_data = response.json()
+    print("Response:", token_data)
+else:
+    print("Failed to retrieve token. Status code: {response.status_code}")
+    print(response.text)
 
 url = 'https://download.appdynamics.com/download/downloadfilelatest/'
 payload = open(AgentDataFile,"w")
